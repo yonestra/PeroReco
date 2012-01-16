@@ -19,10 +19,10 @@ var whenLabel = Ti.UI.createLabel({
 win.add(whenLabel);
 
 var backMonthButton = Ti.UI.createLabel({
-	backgroundColor:"green",
-	top:35, left:30, height:25, width:120,
+	backgroundColor:"#transparent",
+	top:7, left:30, height:25, width:50,
 	textAlign:'center',
-	text:'back'
+	text:'＜＜'
 });
 backMonthButton.addEventListener('click', function(){
 	var date = new Date(Y,parseInt(M)-1-1)
@@ -34,10 +34,10 @@ backMonthButton.addEventListener('click', function(){
 });
 win.add(backMonthButton);
 var forwardMonthButton = Ti.UI.createLabel({
-	backgroundColor:"green",
-	top:35, left:170, height:25, width:120,
+	backgroundColor:"#transparent",
+	top:7, left:240, height:25, width:50,
 	textAlign:'center',
-	text:'forward'
+	text:'＞＞'
 });
 forwardMonthButton.addEventListener('click', function(){
 	var date = new Date(Y,parseInt(M)-1+1)
@@ -57,7 +57,8 @@ var cal = function(date){
 		top:70,
 		height:300,
 		width:320,
-		backgroundColor:'#fff'
+		backgroundImage:'images/bg_paper.jpg'
+		// backgroundColor:'#transparent'
 	});
 	win.add(scrollView);
 
@@ -88,8 +89,10 @@ var cal = function(date){
 		var DD = i+1;
 		var d = new Date(year, month, DD);
 		var calView = Ti.UI.createView({
-			backgroundColor:w[week],
-			borderColor:"black",
+			// backgroundColor:w[week],
+			backgroundColor:"#transparent",
+			// borderColor:"black",
+			borderColor:w[week],
 			top:top, left:left, height:height, width:width,
 			date:d
 		});
@@ -125,7 +128,7 @@ var cal = function(date){
 		} else {
 			Ti.API.info("f"+i+" : "+YYYY+MM+DD + ".png");
 			var dayLabel = Ti.UI.createLabel({
-				color:'white',
+				color:'black',
 				font:{fontSize:20},
 				width:'auto',
 				textAlign:'center',

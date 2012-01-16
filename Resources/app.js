@@ -25,7 +25,8 @@ var tab1 = Titanium.UI.createTab({
 var win2 = Titanium.UI.createWindow({  
     title:'Calendar',
     barColor:'#orange',
-    backgroundColor:'#fff',
+    // backgroundColor:'#fff',
+    backgroundImage:'images/bg_paper.jpg',
     url:"calendar_view.js"
 });
 var tab2 = Titanium.UI.createTab({  
