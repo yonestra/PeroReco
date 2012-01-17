@@ -10,11 +10,11 @@ var M = now.getMonth()+1;
 var whenLabel = Ti.UI.createLabel({
 	font:{
 		fontFamily:'Helvetica Neue',
-		fontSize:25
+		fontSize:20
 	},
 	textAlign:'center',
 	text:Y+"年"+M+"月",
-	top:5, left:'auto', height:25, width:'auto'
+	top:7, left:'auto', height:25, width:'auto'
 });
 win.add(whenLabel);
 
@@ -54,8 +54,8 @@ var cal = function(date){
 	scrollView = Titanium.UI.createScrollView({
 		contentWidth:'auto',
 		contentHeight:'auto',
-		top:70,
-		height:300,
+		top:40,//70
+		height:330,
 		width:320,
 		backgroundImage:'images/bg_paper.jpg'
 		// backgroundColor:'#transparent'
@@ -129,12 +129,12 @@ var cal = function(date){
 			Ti.API.info("f"+i+" : "+YYYY+MM+DD + ".png");
 			var dayLabel = Ti.UI.createLabel({
 				color:'black',
-				font:{fontSize:20},
-				width:'auto',
-				textAlign:'center',
-				height:'auto',
+				font:{fontSize:12},
+				width:'auto', height:'auto',
+				// textAlign:'center',
 				text:i+1,
-				date:d
+				date:d,
+				top: 5, left: 5
 			});
 			// Ti.API.info("f"+i+" : "+dayLabel);
 			calView.add(dayLabel);

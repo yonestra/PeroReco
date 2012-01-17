@@ -339,7 +339,7 @@ scrollView.addEventListener('scroll', function(e)
 		time_old = time;
 		pos_old = pos;
 		
-		if(time_diff < 200 && velocity <  10){
+		if(time_diff < 200 && velocity <  20){
 			if(pos % 50 != 0){
 				scrollView.scrollTo(Math.round(pos/50)*50,0);
 			}

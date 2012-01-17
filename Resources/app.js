@@ -9,7 +9,7 @@ var tabGroup = Titanium.UI.createTabGroup();
 //
 var win1 = Titanium.UI.createWindow({  
     title:'Record',
-    barColor:'#orange',
+    barColor:'#brown',
     backgroundColor:'#fff',
     url:"record_window.js"
 });
@@ -24,7 +24,7 @@ var tab1 = Titanium.UI.createTab({
 //
 var win2 = Titanium.UI.createWindow({  
     title:'Calendar',
-    barColor:'#orange',
+    barColor:'#brown',
     // backgroundColor:'#fff',
     backgroundImage:'images/bg_paper.jpg',
     url:"calendar_view.js"
@@ -40,7 +40,7 @@ var tab2 = Titanium.UI.createTab({
 //
 var win3 = Titanium.UI.createWindow({  
     title:'Data',
-    barColor:'#orange',
+    barColor:'#brown',
     backgroundColor:'#fff',
     url:"table_view.js"
 });

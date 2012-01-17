@@ -164,7 +164,7 @@ pie_webview.url = "pieGraph.html";
 // NavBarに配置するインスタンス
 var tabbar = Titanium.UI.createTabbedBar({
 	width:150,
-	backgroundColor:'#orange',
+	backgroundColor:'#brown',
     labels: ['List', 'Graph'],
     style: Titanium.UI.iPhone.SystemButtonStyle.BAR,
     index:0
@@ -180,7 +180,7 @@ settingButton.addEventListener('click', function () {
 	var recordWindow = Ti.UI.createWindow({
 		url: 'setting.js',
 		title:'Setting',
-    	barColor:'#orange',
+    	barColor:'#brown',
 		backgroundColor:'#fff'
 	});
 	Ti.UI.currentTab.open(recordWindow);
