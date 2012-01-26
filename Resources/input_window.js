@@ -9,10 +9,10 @@ if(String(M).length == 1) M = "0"+M;
 if(String(D).length == 1) D = "0"+D;
 var y_m_d = parseInt(Y+""+M+""+D);
 
-var photoView = Titanium.UI.createLabel({
-	top:30, left:100, height:100, width:100
-});
-win.add(photoView);
+// var photoView = Titanium.UI.createLabel({
+	// top:30, left:100, height:100, width:100
+// });
+// win.add(photoView);
 
 var whenLabel = Titanium.UI.createLabel({
 	color:'#black',
@@ -21,7 +21,7 @@ var whenLabel = Titanium.UI.createLabel({
 		fontSize:20
 	},
 	textAlign:'center',
-	top:5, left:100, height:'auto', width:'auto'
+	top:5, left:'auto', height:'auto', width:'auto'
 });
 whenLabel.text = Y + "年" + M + "月" + D + "日";
 win.add(whenLabel);
@@ -29,27 +29,28 @@ win.add(whenLabel);
 //
 // meat SLIDER
 //
-var meatSliderLabel = Titanium.UI.createLabel({
-	text:'meat value = 0' ,
-	color:'#orange',
-	font:{
-		fontFamily:'Helvetica Neue',
-		fontSize:15
-	},
-	textAlign:'center',
-	top:30, left:50, right:50, height:'auto'
-});
+
 var meatSlider = Titanium.UI.createSlider({
 	backgroundDisabledColor:'#orange',
 	min:0,
 	max:10,
-	top:60, left:50, right:50, height:'auto',
+	top:210, left:50, right:60, height:'auto',
 	thumbImage:'images/meat.png',
 	highlightedThumbImage:'images/meat.png'
 });
+var meatSliderLabel = Titanium.UI.createLabel({
+	text:'0' ,
+	color:'#orange',
+	font:{
+		fontFamily:'Helvetica Neue',
+		fontSize:20
+	},
+	textAlign:'center',
+	top:meatSlider.top, right:30, height:'auto', width:25
+});
 meatSlider.addEventListener('change',function(e)
 {
-	meatSliderLabel.text = 'meat value = ' + Math.round(e.value);
+	meatSliderLabel.text = Math.round(e.value);
 });
 meatSlider.value = 0; // For regression test purposes
 win.add(meatSliderLabel);
@@ -58,28 +59,27 @@ win.add(meatSlider);
 //
 // vegetable SLIDER
 //
-var vegetableSliderLabel = Titanium.UI.createLabel({
-	text:'vegetable value = 0' ,
-	color:'#orange',
-	font:{
-		fontFamily:'Helvetica Neue',
-		fontSize:15
-	},
-	textAlign:'center',
-	top:90, left:50, right:50, height:'auto'
-});
-
 var vegetableSlider = Titanium.UI.createSlider({
 	backgroundDisabledColor:'#orange',
 	min:0,
 	max:10,
-	top:120, left:50, right:50, height:'auto',
+	top:meatSlider.top+50, left:50, right:60, height:'auto',
 	thumbImage:'images/vegetable.png',
 	highlightedThumbImage:'images/vegetable.png'
 });
+var vegetableSliderLabel = Titanium.UI.createLabel({
+	text:'0' ,
+	color:'#orange',
+	font:{
+		fontFamily:'Helvetica Neue',
+		fontSize:20
+	},
+	textAlign:'center',
+	top:vegetableSlider.top, right:30, height:'auto', width:25
+});
 vegetableSlider.addEventListener('change',function(e)
 {
-	vegetableSliderLabel.text = 'vegetable value = ' + Math.round(e.value);
+	vegetableSliderLabel.text = Math.round(e.value);
 });
 vegetableSlider.value = 0; // For regression test purposes
 win.add(vegetableSliderLabel);
@@ -88,54 +88,36 @@ win.add(vegetableSlider);
 //
 // carb SLIDER
 //
-var carbSliderLabel = Titanium.UI.createLabel({
-	text:'carb value = 0',
-	color:'#orange',
-	font:{
-		fontFamily:'Helvetica Neue',
-		fontSize:15
-	},
-	textAlign:'center',
-	top:150, left:50, right:50, height:'auto'
-});
-
 var carbSlider = Titanium.UI.createSlider({
 	backgroundDisabledColor:'#orange',
 	min:0,
 	max:10,
-	top:180, left:50, right:50, height:'auto',
+	top:vegetableSlider.top+50, left:50, right:60, height:'auto',
 	thumbImage:'images/carb.png',
 	highlightedThumbImage:'images/carb.png'
 });
+var carbSliderLabel = Titanium.UI.createLabel({
+	text:'0',
+	color:'#orange',
+	font:{
+		fontFamily:'Helvetica Neue',
+		fontSize:20
+	},
+	textAlign:'center',
+	top:carbSlider.top, right:30, height:'auto', width:25
+});
 carbSlider.addEventListener('change',function(e)
 {
-	carbSliderLabel.text = 'carb value = ' + Math.round(e.value);
+	carbSliderLabel.text = Math.round(e.value);
 });
 carbSlider.value = 0; // For regression test purposes
 win.add(carbSliderLabel);
 win.add(carbSlider);
 
 var saveButton = Ti.UI.createButton({
-	// backgroundColor:'#orange',
-	background:true,
-	backgroundGradient:{
-    	type:'linear',
-    	colors:[
-        {position:0.00,color:'#feccb1'},
-        {position:0.50,color:'#f17432'},
-        {position:0.51,color:'#ea5507'},
-        {position:1.00,color:'#fb955e'}
-       ],
-       startRadius:{x:0,y:0},
-       endRadius:{x:50,y:50}
-   	},
-   	borderRadius:10,
-	backgroundImage:'none',
-	color:"#white",
-	title: 'この値で保存する',
-	top:220, left:50, right:50, height:40
+	title: 'Save'
 });
-win.add(saveButton);
+win.rightNavButton = saveButton;
 
 // saveButton.addEventListener('singletap',function(){
 	// this.backgroundColor = "#blue";
@@ -231,19 +213,19 @@ Titanium.include("lib/date.js");
 function getData(record){
 	if(record != null){
 		win.func = "update_row";
-		meatSliderLabel.text = 'meat value = ' + record.meat_val;
+		meatSliderLabel.text = record.meat_val;
 		meatSlider.value = record.meat_val;
-		vegetableSliderLabel.text = 'vegetable value = ' + record.vegetable_val;
+		vegetableSliderLabel.text = record.vegetable_val;
 		vegetableSlider.value = record.vegetable_val;
-		carbSliderLabel.text = 'carb value = ' + record.carb_val;
+		carbSliderLabel.text = record.carb_val;
 		carbSlider.value = record.carb_val;
 	} else {
 		win.func = "insert_row";
-		meatSliderLabel.text = 'meat value = ' + 0;
+		meatSliderLabel.text = 0;
 		meatSlider.value = 0;
-		vegetableSliderLabel.text = 'vegetable value = ' + 0;
+		vegetableSliderLabel.text = 0;
 		vegetableSlider.value = 0;
-		carbSliderLabel.text = 'carb value = ' + 0;
+		carbSliderLabel.text = 0;
 		carbSlider.value = 0;
 	}
 	var f = Ti.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, y_m_d + ".png");
@@ -251,7 +233,7 @@ function getData(record){
 	if(f.exists()){
 		Ti.API.info("f : "+y_m_d + ".png");
 		var dayImage = Ti.UI.createImageView({
-			width:80, height:80,
+			width:120, height:120,
 			image:f.read()
 		});
 		// calView.backgroundImage = f.read();
@@ -272,7 +254,7 @@ function getData(record){
 }
 
 var photoView = Ti.UI.createView({
-	top:270, left:120, height:80, width:80,
+	top:50, left:100, height:120, width:120,
 	backgroundColor:"gray"
 });
 photoView.addEventListener('click', function () {

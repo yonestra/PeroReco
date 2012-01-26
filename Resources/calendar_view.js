@@ -50,6 +50,7 @@ forwardMonthButton.addEventListener('click', function(){
 win.add(forwardMonthButton);
 
 var scrollView;
+// var tmpView;
 var cal = function(date){
 	scrollView = Titanium.UI.createScrollView({
 		contentWidth:'auto',
@@ -61,6 +62,12 @@ var cal = function(date){
 		// backgroundColor:'#transparent'
 	});
 	win.add(scrollView);
+	var tmpView = Titanium.UI.createView({
+		top:0,//70
+		height:'auto',
+		width:'auto',
+		backgroundColor:'#transparent'
+	});
 
 	var year = date.getFullYear();
 	var month = date.getMonth();
@@ -104,14 +111,14 @@ var cal = function(date){
 				// record: record,
 				func: 'update_row',
 				title:'Input',
-		    	barColor:'#faa61e',
+		    	barColor:'#brown',
 				backgroundColor:'#fff',
 				date:this.date
 			});
 			Ti.UI.currentTab.open(inputWindow);
 		});
-		scrollView.add(calView);
-		// tmpView.add(calView);
+		// scrollView.add(calView);
+		tmpView.add(calView);
 		if(String(DD).length == 1) DD = "0"+DD;
 		var f = Ti.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, YYYY+MM+DD + ".png");
 		// Ti.API.info("applicationDataDirectory:"+Titanium.Filesystem.applicationDataDirectory);
@@ -150,8 +157,8 @@ var cal = function(date){
 		} else {
 			week = 0;
 		}
-		// scrollView.add(tmpView);
 	}
+	scrollView.add(tmpView);
 }
 
 win.addEventListener('focus', function(){
