@@ -2,7 +2,7 @@
 
 //DB操作のメソッドをここに書く
 var RecordDB = function() {
-	this.startDate = new Date(2011,10,22);
+	this.startDate = new Date(2012,1,1);
 	
 	this.dbName = 'records';
 	
@@ -16,7 +16,7 @@ var RecordDB = function() {
 		var res = [];
 		// Ti.API.debug('rows.getRowCount():' + rows.getRowCount());
 		if ( rows.getRowCount() > 0 ) {
-			for (i =0; rows.isValidRow(); i++) {
+			for (var i =0; rows.isValidRow(); i++) {
 				var record = {};
 				record.id = rows.fieldByName('id');
 				record.meat_val = rows.fieldByName('meat_val');

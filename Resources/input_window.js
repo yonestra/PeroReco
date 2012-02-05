@@ -117,45 +117,16 @@ win.add(carbSlider);
 var saveButton = Ti.UI.createButton({
 	title: 'Save'
 });
-win.rightNavButton = saveButton;
-
-// saveButton.addEventListener('singletap',function(){
-	// this.backgroundColor = "#blue";
-// });
-
 saveButton.addEventListener(
 'click', function () {
 	Titanium.API.info("click saveButton!:"+win.func);
-	this.backgroundGradient = {
-    	type:'linear',
-    	colors:[
-	        {position:0.00,color:'#white'},
-	        {position:0.50,color:'#blue'},
-	        {position:0.51,color:'#blue'},
-	        {position:1.00,color:'#white'}
-	    ],
-	    startRadius:{x:0,y:0},
-	    endRadius:{x:50,y:50}
-   	}
-   	
-   	this.backgroundGradient = {
-    	type:'linear',
-    	colors:[
-        	{position:0.00,color:'#feccb1'},
-        	{position:0.50,color:'#f17432'},
-        	{position:0.51,color:'#ea5507'},
-        	{position:1.00,color:'#fb955e'}
-        ],
-        startRadius:{x:0,y:0},
-        endRadius:{x:50,y:50}
-   	}
 	
 	var record = {};
 	// record.index = win.record.index;
 	record.meat_val = Math.round(meatSlider.value);
 	record.vegetable_val = Math.round(vegetableSlider.value);
 	record.carb_val = Math.round(carbSlider.value);
-	record.y_m_d = y_m_d_old;
+	record.y_m_d = y_m_d;
 	record.created_at = new Date();
 	record.created_at.setHours(12); //日付がなぜかズレるのを防止c, record);
 	record.updated_at = new Date();
@@ -183,6 +154,7 @@ saveButton.addEventListener(
     }
     win.close();
 });
+win.rightNavButton = saveButton;
 
 Ti.App.addEventListener('insert_row', function(record) {
 	Titanium.API.debug("insert_row");
