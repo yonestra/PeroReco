@@ -134,17 +134,25 @@ var cal = function(date){
 			calView.add(dayImage);
 		} else {
 			Ti.API.info("f"+i+" : "+YYYY+MM+DD + ".png");
-			var dayLabel = Ti.UI.createLabel({
-				color:'black',
-				font:{fontSize:12},
-				width:'auto', height:'auto',
+			var day = i + 1;
+			var dayView = Ti.UI.createView({
+				// width:'auto', height:'auto',
 				// textAlign:'center',
-				text:i+1,
-				date:d,
-				top: 5, left: 5
+				backgroundImage: 'images/calday/' + 1 + '.png',
+				date:d
 			});
+			// var dayLabel = Ti.UI.createLabel({
+				// color:'black',
+				// font:{fontSize:12},
+				// width:'auto', height:'auto',
+				// // textAlign:'center',
+				// text:i+1,
+				// date:d,
+				// top: 5, left: 5
+			// });
 			// Ti.API.info("f"+i+" : "+dayLabel);
-			calView.add(dayLabel);
+			calView.add(dayView);
+			// calView.add(dayLabel);
 		}
 		if(cols != 3){
 			cols++;
